@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Image, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Context } from '../store/app.Context.js';
 
 const NavbarStarWars = () => {
+
+    const { store, actions } = useContext(Context);
+
     return (
         <Navbar className='justify-content-between'>
             <Navbar.Brand>
@@ -12,12 +16,19 @@ const NavbarStarWars = () => {
             </Navbar.Brand>
             <Nav className='mr-auto'>
                 <Link className='nav-link' style={{color:'white'}} to="/characters">Characters</Link>
-                <Link className='nav-link' style={{color:'red'}} to="/planets">Planets</Link>         
+                <Link className='nav-link' style={{color:'green'}} to="/planets">Planets</Link>         
             </Nav>
-            <DropdownButton id="dropdown-basic-button" title="Favorites">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            <DropdownButton id="dropdown-basic-button" variant="outline-danger" title={`Favorites ${store.favorites.length}`}>
+
+                {
+                    store.favorites.map(
+                        (item, index) => {
+                            return(
+                                <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
+                            )
+                        }
+                    )
+                }
             </DropdownButton>
         </Navbar>
     );
