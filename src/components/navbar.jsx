@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Image, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Navbar, Image, Nav, DropdownButton, Dropdown, Container } from 'react-bootstrap';
 import { Context } from '../store/app.Context.js';
 
 const NavbarStarWars = () => {
@@ -15,21 +15,34 @@ const NavbarStarWars = () => {
                 </Link>
             </Navbar.Brand>
             <Nav className='mr-auto'>
-                <Link className='nav-link' style={{color:'white'}} to="/characters">Characters</Link>
-                <Link className='nav-link' style={{color:'green'}} to="/planets">Planets</Link>         
+                <Link className='nav-link' style={{ color: 'white' }} to="/characters">Characters</Link>
+                <Link className='nav-link' style={{ color: 'red' }} to="/planets">Planets</Link>
             </Nav>
-            <DropdownButton id="dropdown-basic-button" variant="outline-danger" title={`Favorites ${store.favorites.length}`}>
-
+            <Container className='justify-content-end'>
+            <DropdownButton id="dropdown-basic-button" variant="outline-light" title={`Fav Characters: ${store.favorites.length}`}>
                 {
                     store.favorites.map(
                         (item, index) => {
-                            return(
+                            return (
                                 <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
                             )
                         }
                     )
                 }
             </DropdownButton>
+            <span style={{color: 'black'}}>a</span>
+            <DropdownButton id="dropdown-basic-button" variant="outline-danger" title={`Fav Planets: ${store.favoritespla.length}`}>
+                {
+                    store.favoritespla.map(
+                        (item, index) => {
+                            return (
+                                <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
+                            )
+                        }
+                    )
+                }
+            </DropdownButton>
+            </Container>
         </Navbar>
     );
 };

@@ -14,18 +14,19 @@ export const Home = () => {
     useEffect(() => {
 
         actions.fetchPeople();
+        actions.fetchPlanets();
 
     }, [])
 
     return (
         <div>
             <h1 style={{fontStyle: 'italic'}}>A long time ago in a galaxy far, far away...</h1>
-            <h2 style={{ color: 'white', paddingTop: 35, paddingBottom: 25, textDecorationLine: 'underline' }}>Characters</h2>
+            <h2 style={{ color: 'white', paddingTop: 35, paddingBottom: 10, textDecorationLine: 'underline' }}>Characters</h2>
             {
                 store.peopleList.map(
                     (item, index) => {
                         return (
-                            <Container className='d-inline'>
+                            <Container>
                             <Card key={index} style={{ width: '18rem', color:'white', background: 'black' }}>
                                 <Card.Img variant="top" src="https://starwars-visualguide.com/assets/img/characters/1.jpg" />
                                 <Card.Body>
@@ -41,7 +42,7 @@ export const Home = () => {
                                     <Button variant="primary" style={{marginRight: 100}}>Learn More!</Button>
                                     {store.favorites.includes(item.name) ? (
                                         null
-                                    ) : <Button onClick={() => actions.setFavorites(item.name)} style={{paddingLeft:'50'}} variant="outline-danger"><FaHeart /></Button>}
+                                    ) : <Button onClick={() => actions.setFavorites(item.name)} style={{paddingLeft:'50'}} variant="outline-light"><FaHeart /></Button>}
                                 </Card.Body>
                             </Card>
                             </Container>
@@ -49,6 +50,41 @@ export const Home = () => {
                     }
                 )
             }
+            <h2 style={{ color: 'green', paddingTop: 35, paddingBottom: 25, textDecorationLine: 'underline' }}>Planets</h2>
+            {
+                store.planetsList.map(
+                    (item, index) => {
+                        return (
+                            <Container>
+                            <Card key={index} style={{ width: '18rem', color:'white', background: 'black' }}>
+                                <Card.Img variant="top" src="https://starwars-visualguide.com/assets/img/planets/9.jpg" />
+                                <Card.Body>
+                                    <Card.Title>{item.name}</Card.Title>
+                                    <Card.Text>
+                                        <ul>
+                                            <li>Population: {item.population}</li>
+                                            <li>Climate: {item.climate} </li>
+                                            <li>Terrain: {item.terrain}</li>
+                                            <li>Surface Water: {item.surface_water}</li>
+                                        </ul>
+                                    </Card.Text>
+                                    <Button variant="primary" style={{marginRight: 100}}>Learn More!</Button>
+                                    {store.favoritespla.includes(item.name) ? (
+                                        null
+                                    ) : <Button onClick={() => actions.setFavoritespla(item.name)} style={{paddingLeft:'50'}} variant="outline-danger"><FaHeart /></Button>}
+                                </Card.Body>
+                            </Card>
+                            </Container>
+                        );
+                    }
+                )
+            }
+
+
+
+
+
+
         </div>
 
     );
