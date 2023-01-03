@@ -63,9 +63,9 @@ export const Home = () => {
                                         <Card.Title style={{color: 'turquoise'}}>{item.name}</Card.Title>
                                         <Card.Text>
                                             <ul>
-                                                <li>Population: {item.population}</li>
                                                 <li>Climate: {item.climate} </li>
                                                 <li>Terrain: {item.terrain}</li>
+                                                <li>Population: {item.population}</li>
                                                 <li>Surface Water: {item.surface_water}</li>
                                             </ul>
                                         </Card.Text>
