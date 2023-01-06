@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Image, Nav, DropdownButton, Dropdown, Container } from 'react-bootstrap';
 import { Context } from '../store/app.Context.js';
+import { FaTrash } from 'react-icons/fa';
 
 const NavbarStarWars = () => {
 
     const { store, actions } = useContext(Context);
+
+    const [listoftodos, setlistoftodos] = useState([]); 
 
     return (
         <Navbar className='justify-content-between'>
@@ -24,7 +27,7 @@ const NavbarStarWars = () => {
                     store.favorites.map(
                         (item, index) => {
                             return (
-                                <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
+                                <Dropdown.Item key={index} href="#/action-1">{item}  <FaTrash /></Dropdown.Item>
                             )
                         }
                     )
@@ -36,7 +39,7 @@ const NavbarStarWars = () => {
                     store.favoritespla.map(
                         (item, index) => {
                             return (
-                                <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
+                                <Dropdown.Item key={index} href="#/action-1">{item}  <FaTrash /></Dropdown.Item>
                             )
                         }
                     )

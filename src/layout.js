@@ -8,6 +8,8 @@ import NavbarStarWars from './components/navbar';
 import { Home } from './views/home';
 import Planets from './views/planets';
 import Characters from './views/characters';
+import Characterd from './views/characterdetail';
+import Planetsd from './views/planetdetail';
 
 
 const Layout = () => {
@@ -25,7 +27,9 @@ const Layout = () => {
                         <Routes>
                             <Route exact path="/" element={<Home />} />
                             <Route exact path="/characters" element={<Characters />} />
+                            <Route exact path="/character/:id" element={<Characterd />} />
                             <Route exact path="/planets" element={<Planets />} />
+                            <Route exact path="/planet/:id" element={<Planetsd />} />
                             <Route exact path="*" element={<h1 style={{color:'purple'}}>Route not found!</h1>} />
                         </Routes>
                     </Col>

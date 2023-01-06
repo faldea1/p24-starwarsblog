@@ -5,25 +5,24 @@ import { FaHeart, FaUnderline, FaArrowAltCircleLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
-const Planets = () => {
+const Planetsd = () => {
 
     const { store, actions } = useContext(Context);
 
     return (
         <div>
             <Link variant="primary" style={{ color: 'yellow' }} to={`/`}><FaArrowAltCircleLeft style={{ marginRight: 5, paddingBottom: 5, fontSize: 25 }} />Go Back!</Link>
-            <h1 style={{ color: 'red', paddingTop: 35, paddingBottom: 25, paddingBottom: 25 }}>Planets of Star Wars</h1>
+            <h1 style={{ color: 'white', paddingTop: 35, paddingBottom: 25, paddingBottom: 25 }}>Planet of Star Wars</h1>
             {
-                store.planetsForDetails.map(
+                store.planetsList.map(
                     (item, index) => {
                         return (
                             <ul style={{ display: 'inline-block' }}>
                                 <Card key={index} style={{ width: '18rem', color: 'white', background: 'black', border: 'solid red' }}>
-                                    <Card.Img variant="top" src={item.plaurl} />
+                                    <Card.Img variant="top" src="https://starwars-visualguide.com/assets/img/planets/9.jpg" />
                                     <Card.Body>
-                                        <Card.Title style={{ color: 'turquoise' }}>{item.placaption}</Card.Title>
+                                        <Card.Title style={{ color: 'turquoise' }}>{item.name}</Card.Title>
                                         <Card.Text>
-                                            <p style={{ color: 'grey' }}>{item.plaphrase}</p>
                                             <ul>
                                                 <li>Climate: {item.climate} </li>
                                                 <li>Terrain: {item.terrain}</li>
@@ -48,9 +47,9 @@ const Planets = () => {
                         );
                     }
                 )
-            }
-        </div>
+            }  
+        </div>       
     );
 };
 
-export default Planets;
+export default Planetsd;
